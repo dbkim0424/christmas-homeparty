@@ -1,2 +1,2 @@
-# christmas-homeparty
-christmas-homeparty
+# invitation
+invitation
