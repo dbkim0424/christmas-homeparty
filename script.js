@@ -1,7 +1,7 @@
 // Guest list data stored in localStorage
 let guests = [];
 
-// Load guests from localStorage on page load
+// Initialize application on page load
 document.addEventListener('DOMContentLoaded', function() {
     loadGuests();
     updateGuestList();
@@ -9,6 +9,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup form submission
     const form = document.getElementById('rsvpForm');
     form.addEventListener('submit', handleRSVP);
+    
+    // Add click effect to activity cards
+    const activityCards = document.querySelectorAll('.activity-card');
+    activityCards.forEach(card => {
+        card.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+    });
+    
+    // Add hover effect to timeline items
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = 'var(--ice-blue)';
+        });
+        item.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '';
+        });
+    });
+    
+    // Start countdown
+    updateCountdown();
 });
 
 // Load guests from localStorage
@@ -147,30 +172,7 @@ function updateGuestList() {
     });
 }
 
-// Add some festive interactivity
-document.addEventListener('DOMContentLoaded', function() {
-    // Add click effect to activity cards
-    const activityCards = document.querySelectorAll('.activity-card');
-    activityCards.forEach(card => {
-        card.addEventListener('click', function() {
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 200);
-        });
-    });
-    
-    // Add hover effect to timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = 'var(--ice-blue)';
-        });
-        item.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = '';
-        });
-    });
-});
+
 
 // Countdown to Christmas (if before Dec 25)
 function updateCountdown() {
@@ -190,4 +192,3 @@ function updateCountdown() {
 
 // Update countdown every minute
 setInterval(updateCountdown, 60000);
-updateCountdown();

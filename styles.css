@@ -139,7 +139,7 @@ main {
 
 .detail-item {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     gap: 15px;
     padding: 15px;
     background: var(--ice-blue);
